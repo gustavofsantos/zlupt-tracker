@@ -1,6 +1,7 @@
 const hypercore = require('hypercore');
 const hyperdiscovery = require('hyperdiscovery');
 const logger = require('./logger');
+const package = require('./package');
 
 let feed, swarm;
 
@@ -30,6 +31,10 @@ function createHyperFeed(path, key) {
 
 function restoreFromHypercore(listener) {
   const length = feed.length;
+  const queryPackage = package('request', {
+    operation: 'lastState'
+  });
+  feed.append()
   listener(length);
 }
 
